@@ -88,7 +88,7 @@ input[type=range]{accent-color:var(--blue)}
 .add .lab{background:#ed1c24}
 .txt{flex:1;min-height:0;margin:1.2mm 2.4mm 1mm;overflow:hidden;display:flex;align-items:flex-start;white-space:pre-line;line-height:1.25}
 .txt>div{width:100%}
-.inc .txt{flex-direction:column;justify-content:flex-start}
+.inc .txt,.add .txt{flex-direction:column;justify-content:flex-start}
 .dl{padding-left:1.1mm;text-indent:-1.1mm}
 .ase{flex:none;width:calc(35mm/var(--k,1));height:calc(35mm/var(--k,1));border:calc(.3mm/var(--k,1)) solid #e1e2f1;display:flex;align-items:center;justify-content:center;padding:calc(2mm/var(--k,1))}
 .grp{left:3.4mm;right:3.5mm;top:calc(100.8mm + 10mm*(var(--k,1) - 1));height:calc(40.2mm - 10mm*(var(--k,1) - 1));display:flex;align-items:center;justify-content:center;gap:12mm}
@@ -205,7 +205,7 @@ function pageHTML(r,i){
   <div class="img">${img?`<img class="prod" data-i="${i}" data-o="${img}" src="${img}" alt="">`:(r.IMAGEN?'Sin imagen: '+esc(r.IMAGEN):'Sin imagen')}${pc?`<div class="pic"><img src="${pc}" alt=""></div>`:''}</div>
   <div class="tab">${t}</div>
   <div class="inc"><div class="lab">Incluye:</div><div class="txt fit" data-max="8" data-min="4">${String(r.INCLUYE||'').split(/\r?\n|;|\|/).map(x=>x.trim()).filter(Boolean).map(x=>'<div class="dl">- '+esc(x)+'</div>').join('')}</div></div>
-  <div class="add"><div class="lab">Añade y mejora tu compra</div><div class="txt fit" data-max="8" data-min="4">${esc(r.ANADE)}</div></div>
+  <div class="add"><div class="lab">Añade y mejora tu compra</div><div class="txt fit" data-max="8" data-min="4">${String(r.ANADE||'').split(/\r?\n|;|\|/).map(x=>x.trim()).filter(Boolean).map(x=>'<div class="dl">- '+esc(x)+'</div>').join('')}</div></div>
   <div class="grp"><div class="ase"><img src="${ASE}" alt=""></div><div class="ref fit" data-max="11" data-min="6">Ref. ${esc(ln8(r.CODIGO_LN))}</div></div>
   <div class="ft"></div><div class="ft2"></div>
   <img class="bm" src="${BM}" alt="">
